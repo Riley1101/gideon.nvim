@@ -19,7 +19,7 @@ This Neovim plugin allows you to visually select chunks of code and leverage an 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 
-[![Preview](/preview/demo.mp4)](https://github.com/Riley1101/gideon.nvim/blame/main/preview/demo.mp4)
+[![Preview](/preview/demo.mp4)](https://github.com/Riley1101/gideon.nvim/raw/refs/heads/main/preview/demo.mp4)
 
 ## Installation
 
