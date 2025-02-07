@@ -15,6 +15,12 @@ This Neovim plugin allows you to visually select chunks of code and leverage an 
 - **Result Integration:** The AI's response is integrated back into your Neovim buffer, replacing the selected chunk.
 - **Configuration:** Customizable settings allow you to fine-tune the interaction with the AI assistant (API keys, model selection, etc.).
 
+## Preview
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+
+[![Preview](/preview/demo.mp4)](https://github.com/Riley1101/gideon.nvim/blame/main/preview/demo.mp4)
+
 ## Installation
 
 This plugin requires a Neovim installation with Lua support. Install using your preferred plugin manager (e.g., Packer, vim-plug):
