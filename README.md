@@ -15,6 +15,9 @@ This Neovim plugin allows you to visually select chunks of code and leverage an 
 - **Result Integration:** The AI's response is integrated back into your Neovim buffer, replacing the selected chunk.
 - **Configuration:** Customizable settings allow you to fine-tune the interaction with the AI assistant (API keys, model selection, etc.).
 
+## Preview
+
+![Gideon.nvim Demo](https://raw.githubusercontent.com/Riley1101/gideon.nvim/refs/heads/main/preview/demo.gif)
 
 ## Installation
 
