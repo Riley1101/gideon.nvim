@@ -124,8 +124,6 @@ local function get_selected_text()
 	return selected_text
 end
 
-local function generate() end
-
 local function arg_mode(args)
 	local text = args[1] -- Get the argument
 
@@ -161,4 +159,4 @@ end
 
 vim.api.nvim_command("command! -nargs=1 Gideongen :lua require('gideon').arg_mode({<f-args>})")
 
-return { setup = setup, generate = generate, arg_mode = arg_mode }
+return { setup = setup, arg_mode = arg_mode }

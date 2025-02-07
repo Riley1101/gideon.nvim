@@ -1,6 +1,6 @@
 # gideon.nvim
 
-This Neovim plugin allows you to visually select chunks of code and leverage an AI assistant to perform actions on them. It's designed to seamlessly integrate into your Neovim workflow, making it easy to offload repetitive or complex code manipulation tasks.
+Neovim plugin with GEMINI's power.
 
 ## Features
 
@@ -13,7 +13,6 @@ This Neovim plugin allows you to visually select chunks of code and leverage an 
   - Code translation (converting between languages)
   - Code explanation (receiving comments and explanations)
 - **Result Integration:** The AI's response is integrated back into your Neovim buffer, replacing the selected chunk.
-- **Configuration:** Customizable settings allow you to fine-tune the interaction with the AI assistant (API keys, model selection, etc.).
 
 ## Preview
 
@@ -57,22 +56,4 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 ## License
 
-MIT License
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+MIT License.
