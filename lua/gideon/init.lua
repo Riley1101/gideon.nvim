@@ -1,5 +1,3 @@
-local augroup = "GideonScratch"
-
 local API_KEY = os.getenv("GEMINI_API_KEY")
 
 local system_prompt = [[
@@ -68,31 +66,12 @@ local function send_message(message, history_json)
 
 	return decoded_data, nil
 end
-
-local function create_buffer()
-	local buf = vim.api.nvim_create_buf(true, true)
-	vim.api.nvim_buf_set_name(buf, "*gideon-scratch*")
-	vim.api.nvim_set_option_value("filetype", "lua", { buf = buf })
-	return buf
-end
-
-local function main()
-	local buf = create_buffer()
-
-	vim.api.nvim_buf_set_lines(buf, 0, -1, true, { "-- Welcome to Gideon!", "" })
-
-	vim.api.nvim_win_set_buf(0, buf)
-
-	vim.api.nvim_win_set_cursor(0, { vim.api.nvim_buf_line_count(buf), 0 })
-end
-
 local function setup()
-	local augroup = vim.api.nvim_create_augroup(augroup, { clear = true })
-
-	vim.api.nvim_create_autocmd(
-		"VimEnter",
-		{ group = augroup, desc = "Set a fennel scratch buffer on load", once = true, callback = main }
-	)
+	local has_gemini_token = API_KEY and true ~= nil
+	if not has_gemini_token then
+		print("Please set the GEMINI_API_KEY environment variable")
+		return
+	end
 end
 
 local function insert_ai_text(text)
@@ -174,9 +153,9 @@ local function arg_mode(args)
 	end
 	local text = response.data
 	insert_ai_text(text)
-	-- clean this history
+	-- clear the history
 	history_table = {
-		text = escape_newlines(system_prompt), -- Escape newlines if needed
+		{ text = escape_newlines(system_prompt) }, -- Escape newlines if needed
 	}
 end
 
