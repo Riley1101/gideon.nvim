@@ -16,7 +16,7 @@ Gemini powered minimal quick and easy assistant for Neovim.
 
 ## Preview
 
-![Gideon.nvim Demo](https://raw.githubusercontent.com/Riley1101/gideon.nvim/refs/heads/main/preview/demo.gif)
+![Gideon.nvim Demo](https://raw.githubusercontent.com/Riley1101/gideon.nvim/refs/heads/main/preview/demo-2.gif)
 
 ## Installation
 
