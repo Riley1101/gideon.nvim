@@ -1,6 +1,6 @@
 # gideon.nvim
 
-Neovim plugin with GEMINI's power.
+Gemini powered minimal quick and easy assistant for Neovim.
 
 ## Features
 
@@ -34,19 +34,26 @@ use { "Riley1101/gideon.nvim" }
 Plug 'Riley1101/gideon.nvim'
 ```
 
-## Configuration
-
-The plugin uses a Lua configuration table located at `lua/yourconfig/ai_chunk_processor.lua`. Example configuration:
-
 ```lua
-{
-	name = "gideon",
-	config = function()
-		local gideon = require("gideon")
-		gideon.setup()
-	end,
+-- lazy
+return {
+  "Riley1101/gideon.nvim",
+  config = function()
+    local gideon = require("gideon")
+    gideon.setup()
+  end,
 }
 ```
+
+## Usage
+
+```
+:Gideongen <your prompt>
+```
+
+Select text visually, then `:Gideongen <your prompt>`
+
+This command sends the visually selected text to the AI for processing.`<your prompt>` should describe the desired transformation or task.
 
 **Note:** Make sure you have `"GEMINI_API_KEY"` in your shell environment variables.
 

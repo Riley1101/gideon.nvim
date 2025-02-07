@@ -23,13 +23,10 @@ local function push_message_to_history(history_table, message)
 end
 
 local function send_message(message, history_json)
-	-- local content = push_message_to_history(history_table, message)
-
 	local parts_with_history = history_json
 	parts_with_history[#parts_with_history + 1] = {
 		text = message,
 	}
-
 	local data = {
 		contents = {
 			{
@@ -66,6 +63,7 @@ local function send_message(message, history_json)
 
 	return decoded_data, nil
 end
+
 local function setup()
 	local has_gemini_token = API_KEY and true ~= nil
 	if not has_gemini_token then
@@ -151,7 +149,7 @@ local function arg_mode(args)
 	end
 	local text = response.data
 	insert_ai_text(text)
-	-- clear the history
+	-- clear the history , no plan to support multiple context for now
 	history_table = {
 		{ text = escape_newlines(system_prompt) }, -- Escape newlines if needed
 	}
