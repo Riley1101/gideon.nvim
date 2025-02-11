@@ -19,8 +19,8 @@ local CURRENT_MODEL = "gemini"
 
 local function setup(c)
 	local config = c or {
-		prompt = default_prompt,
-		model = CURRENT_MODEL,
+		prompt = c.prompt or default_prompt,
+		model = c.model or "gemini",
 	}
 	CURRENT_MODEL = config.model
 	message.push_message_to_history(HISTORY_TABLE, config.prompt)
