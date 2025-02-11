@@ -41,7 +41,7 @@ local function deepseek(message, history_json)
 	---@diagnostic disable-next-line: need-check-nil
 	handle:close()
 
-	let decoded_data, err = vim.fn.json_decode(response)
+	local decoded_data, err = vim.fn.json_decode(response)
 
 	local result = {}
 
