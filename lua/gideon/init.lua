@@ -16,20 +16,25 @@ end
 -- Construct the history as a Lua table
 local HISTORY_TABLE = message.history_table
 local CURRENT_MODEL = "gemini"
+local CONFIG = {}
 
 local function setup(c)
 	local config = c or {
 		prompt = c.prompt or default_prompt,
 		model = c.model or "gemini",
 	}
+	CONFIG = config
+
 	CURRENT_MODEL = config.model
-	message.push_message_to_history(HISTORY_TABLE, config.prompt)
+	message.push_message_to_history(HISTORY_TABLE, config.prompt, config.model)
 end
 
 local function send_to_model(name)
 	local model
 	if name == "gemini" then
 		model = models.gemini
+	elseif name == "deepseek" then
+		model = models.deepseek
 	end
 	return model
 end
@@ -41,9 +46,11 @@ local function arg_mode(args)
 
 	local input = table.concat(chunks, "\n")
 
-	HISTORY_TABLE[#HISTORY_TABLE + 1] = {
-		text = "Take a look at this snippet " .. input,
-	}
+	message.push_message_to_history(
+		HISTORY_TABLE,
+		string.format("Take a look at this snippet %s", input),
+		CURRENT_MODEL
+	)
 
 	local ai = send_to_model(CURRENT_MODEL)
 
