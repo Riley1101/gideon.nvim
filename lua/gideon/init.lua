@@ -14,14 +14,24 @@ local function escape_newlines(str)
 end
 
 -- Construct the history as a Lua table
-local history_table = message.history_table
+local HISTORY_TABLE = message.history_table
+local CURRENT_MODEL = "gemini"
 
 local function setup(c)
 	local config = c or {
 		prompt = default_prompt,
+		model = CURRENT_MODEL,
 	}
+	CURRENT_MODEL = config.model
+	message.push_message_to_history(HISTORY_TABLE, config.prompt)
+end
 
-	message.push_message_to_history(history_table, config.prompt)
+local function send_to_model(name)
+	local model
+	if name == "gemini" then
+		model = models.gemini
+	end
+	return model
 end
 
 local function arg_mode(args)
@@ -31,19 +41,21 @@ local function arg_mode(args)
 
 	local input = table.concat(chunks, "\n")
 
-	history_table[#history_table + 1] = {
+	HISTORY_TABLE[#HISTORY_TABLE + 1] = {
 		text = "Take a look at this snippet " .. input,
 	}
 
+	local ai = send_to_model(CURRENT_MODEL)
+
 	---@diagnostic disable-next-line: unused-local
-	local response, _err = models.gemini(text, history_table)
+	local response, _err = ai(text, HISTORY_TABLE)
 
 	---@diagnostic disable-next-line: need-check-nil
 	local t = response.data
 
 	vim_utils.insert_ai_text(t)
 	-- clear the history , no plan to support multiple context for now
-	history_table = {
+	HISTORY_TABLE = {
 		{ text = escape_newlines(default_prompt) }, -- Escape newlines if needed
 	}
 end
