@@ -15,13 +15,12 @@ local function deepseek(message, history_json)
 	}
 
 	local data = {
-		model = "deepseek",
+		model = "deepseek-chat",
 		stream = false,
 		messages = parts_with_history,
 	}
 
 	local json_data = vim.fn.json_encode(data)
-	print(vim.inspect(json_data))
 
 	-- Construct the curl command
 	local curl_command = string.format(
@@ -44,20 +43,10 @@ local function deepseek(message, history_json)
 	local decoded_data, err = vim.fn.json_decode(response)
 
 	local result = {}
-
 	if decoded_data and decoded_data.choices and #decoded_data.choices > 0 then -- Check for candidates
 		local first_candidate = decoded_data.choices[1]
-		if
-			first_candidate
-			and first_candidate.message
-			and first_candidate.message.content
-			and #first_candidate.message.content > 0
-		then
-			local first_part = first_candidate.message.content[1]
-			if first_part and first_part.content then
-				local generated_text = first_part.content
-				result.data = generated_text
-			end
+		if first_candidate and first_candidate.message and first_candidate.message.content then
+			result.data = first_candidate.message.content
 		end
 	end
 
